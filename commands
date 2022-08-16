@@ -1,0 +1,29 @@
+		No			                  	   	Commands			                    		Explication
+
+
+		1. 			                	       	date				                    		Unix has a date command that shows the date and time in the form used on the internet.					 
+		2.				                      	who				                          The people who are  also using system like you. Use the who command.
+
+		3.				                        cal	+	$ cal 7 2022		          		To see the calendar for the month of Auguest,2022, provide the month number and year.
+  
+		4.	                       				ps		                      				To view all processes that you are responsible for creating run the ps command.
+
+		5                       					ls			                                            			You can list the names of the files available in this directory with the ls command.
+
+		6.		                    			ls | wc  		                                          			The file list contains 6 line, 6 words and 42 characters.
+
+		7.					ls > list ( list is filename )			Diretory name storing command.(Ex: Now you in home all diretory names store)
+
+		8.					unix						command not found
+
+		9.					tput -s						tput clear (First type this command tput next enter press tput option all showing Ex: Clear , Rest)
+
+		10.					ls directoryname*				Just displaying a list of filenames isn't enough;.
+
+		11.					ls -l masthan* (masthan is filename)		-l option makes it display some of the attributes as well.
+
+		12.					cat masthan  ( masthan is filename )		raedable file.  
+
+		13.					x=5, ( echo $x  ) value 5			You can assign a value to a variable at the prompt. A $ required during evaluation.
+
+		14.					exit 						Quite the terminal.
