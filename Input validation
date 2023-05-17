@@ -19,3 +19,34 @@ int main() {
 
     return 0;
 }
+
+
+
+Number validation in c programming 
+----------------------------------
+
+
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char userInput[100];
+    printf("Enter a string: ");
+    fgets(userInput, sizeof(userInput), stdin);
+
+    int i = 0;
+    while (userInput[i] != '\0') {
+        if (!isdigit(userInput[i])) {
+            printf("Invalid input! Only numeric characters are allowed.\n");
+            return 0;
+        }
+        i++;
+    }
+
+    printf("Valid input! It contains only numeric characters.\n");
+
+    return 0;
+}
+
+
