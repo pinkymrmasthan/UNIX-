@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char userInput[100];
+    printf("Enter a string: ");
+    fgets(userInput, sizeof(userInput), stdin);
+
+    int i = 0;
+    while (userInput[i] != '\0') {
+        if (!isalpha(userInput[i]) && !isspace(userInput[i])) {
+            printf("Invalid input! Only alphabetic characters and spaces are allowed.\n");
+            return 0;
+        }
+        i++;
+    }
+
+    printf("Valid input! It contains only alphabetic characters and spaces.\n");
+
+    return 0;
+}
