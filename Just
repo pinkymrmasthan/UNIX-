@@ -33,3 +33,69 @@ int main()
     fclose(fp);
     return 0;
 }
+
+
+--------------
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node {
+    int data;           // Assuming the data is an integer
+    struct Node* next;  // Pointer to the next node
+} Node;
+
+Node* readFileIntoLinkedList() {
+    char filename[100]; // Assuming a maximum filename length of 100 characters
+    printf("Enter the filename: ");
+    scanf("%s", filename);
+
+    FILE* file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Failed to open the file.\n");
+        return NULL;
+    }
+
+    Node* head = NULL;
+    Node* tail = NULL;
+    int value;
+
+    while (fscanf(file, "%d", &value) == 1) {
+        // Create a new node
+        Node* newNode = (Node*)malloc(sizeof(Node));
+        newNode->data = value;
+        newNode->next = NULL;
+
+        // Update the head and tail pointers
+        if (head == NULL) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail->next = newNode;
+            tail = tail->next;
+        }
+    }
+
+    fclose(file);
+    return head;
+}
+
+int main() {
+    Node* head = readFileIntoLinkedList();
+
+    if (head != NULL) {
+        printf("Data from the file:\n");
+        Node* current = head;
+        while (current != NULL) {
+            printf("%d ", current->data);
+            current = current->next;
+        }
+        printf("\n");
+
+        // TODO: Free the memory occupied by the linked list
+    }
+
+    return 0;
+}
+
