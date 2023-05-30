@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include <string.h>
+#include <string.h>              // Start   
 #include <ctype.h>
 #include <stdlib.h>
 struct Node
 {
 	// structure Declaration
 	long int Customer_Id;
-	char Customer_Name[100];
+	char Customer_Name[100];        // User Input Details...
 	char Mobile_No[100];
 	long int Amount;
 	long int Account_Id;
@@ -15,10 +15,10 @@ struct Node
 
 struct Node *Head       	= NULL;                                                  // 4 Node Allocate
 struct Node *Current    	= NULL;
-struct Node *NewNode    	= NULL;
+struct Node *NewNode    	= NULL;         // Linked List Node Declaration 
 struct Node *Tail      		= NULL;
 struct Node *Tmp        	= NULL;
-struct Node *Search_Tmp        	= NULL;
+struct Node *Search_Tmp        	= NULL
 struct Node *Search_Tmp2       	= NULL;
 struct Node *Update_Tmp       	= NULL;
 struct Node *Credit_Tmp 	= NULL;
@@ -30,40 +30,40 @@ struct Node *Quit_Tmp	 	= NULL;
 
 int main ()
 {
-	long int Account_Id = 1;
+	long int Account_Id = 1;             // Account No Default..
 	while(1)
 	{
-		int Search_Account_No, Search_Menu, Search_Customer;
-		int Update_Menu, Update_Account;
-		long int Credit_Amount, Credit_Account , Credit_Cus ;
-		long int Debit_Amount, Debit_Account , Debit_Cus;
-		long int Fund_Amount, Fund_Recive, Fund_Cus, Fund_Account;
-		int Check = 0;
-		int ValCheck;
-		FILE *F1;
-		printf("\n ****** ABC BANK ***** \n\n");
+		int Search_Account_No, Search_Menu, Search_Customer;       // Search Account Variable Declaration 
+		int Update_Menu, Update_Account;                           // Update Account Variable Declaration 
+		long int Credit_Amount, Credit_Account , Credit_Cus ;      // credit Variable Declaration 
+		long int Debit_Amount, Debit_Account , Debit_Cus;          // debit variable Declaration 
+		long int Fund_Amount, Fund_Recive, Fund_Cus, Fund_Account;  // Fund Transfer Variable Declaration 
+		int Check = 0;                    // error Handling 
+		int ValCheck;                     // Switch condition 
+		FILE *F1;                         // File Pointer Declaration 
+		printf("\n ****** ABC BANK ***** \n\n");      // Title Heading 
 		printf("1. Add Account ( Single )\n2. Add Account ( Bulk upload ) \n3. View Accounts \n4. Search Account \n5. Update Details \n6. Credit \n7. Debit\n8. Fun Transfer \n9. Quit\n\n");
-
-		printf("Enter the choice : ");
-		scanf("%d", &ValCheck);
-		switch(ValCheck)
-		{
-			case 1:
-				printf("\n Add Account ( Single ) \n");
-				NewNode = malloc(sizeof(struct Node));
+// Main Menu options 
+		printf("Enter the choice : ");      // user input for switch case .
+		scanf("%d", &ValCheck);             // user input scanf for switch case
+		switch(ValCheck)                    // switch case check 
+		{ 
+			case 1:                    // case 1st Add Account for single 
+				printf("\n Add Account ( Single ) \n");   // Title 
+				NewNode = malloc(sizeof(struct Node));     // Run Time Memory Allocation 
 				//	printf("Enter the Account ID    : ");
 				//	scanf("%ld", &NewNode->Account_Id);
 				printf("Enter the Customer ID   : ");
-				scanf("%ld", &NewNode->Customer_Id);
+				scanf("%ld", &NewNode->Customer_Id);         // customer Name user input 
 				getchar();
 				printf("Enter the Customer_Name : ");
-				scanf("%[^\n]", NewNode->Customer_Name);
+				scanf("%[^\n]", NewNode->Customer_Name);     // customer Id user input
 				printf("Enter the Mobile No     : ");
-				scanf("%s", NewNode->Mobile_No);
-				printf("Enter the Amount        : ");
+				scanf("%s", NewNode->Mobile_No);             // customer Mobile Number user input
+				printf("Enter the Amount        : ");// customer Amount user input
 				scanf("%ld", &NewNode->Amount);
-				NewNode->Account_Id = Account_Id;
-
+				NewNode->Account_Id = Account_Id;    // Account Id Increament & Assigning 
+/* ----- Single linked list using user input details ----- */
 				NewNode->Next = NULL;
 				if(Head == NULL)
 				{
@@ -77,6 +77,7 @@ int main ()
 				}
 				Account_Id++;
 				break;
+				
 			case 2:
 				F1 = fopen("Bulk_Report.txt", "r");
 				printf("\n Add Account ( Bulk upload ) \n");
