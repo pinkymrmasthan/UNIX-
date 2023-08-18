@@ -1,0 +1,60 @@
+
+Student Details File Handling
+
+Default (GPT-3.5)
+
+User
+File handling student details register student update student delete student list student in perl
+
+ChatGPT
+Certainly! Here's an example of how you can perform file handling operations for a student details register in Perl:
+
+perl
+Copy code
+#!/usr/bin/perl
+
+my $filename = "student_details.txt";
+
+sub add_student {
+    my ($name, $roll, $marks) = @_;
+    open my $fh, '>>', $filename or die "Could not open file: $!";
+    print $fh "$name,$roll,$marks\n";
+    close $fh;
+    print "Student added successfully.\n";
+}
+
+sub update_student {
+    my ($roll, $new_marks) = @_;
+    open my $fh, '+<', $filename or die "Could not open file: $!";
+    my @lines = <$fh>;
+    for (@lines) {
+        chomp;
+        my ($name, $r, $marks) = split /,/;
+        if ($r == $roll) {
+            seek $fh, 0, 0;
+            print $fh "$name,$roll,$new_marks\n";
+            truncate $fh, tell $fh;
+            print "Student information updated.\n";
+            last;
+        }
+    }
+    close $fh;
+}
+
+sub delete_student {
+    my ($roll) = @_;
+    open my $fh, '+<', $filename or die "Could not open file: $!";
+    my @lines = <$fh>;
+    seek $fh, 0, 0;
+    truncate $fh, 0;
+    for (@lines) {
+        chomp;
+        my ($name, $r, $marks) = split /,/;
+        if ($r != $roll) {
+            print $fh "$name,$r,$marks\n";
+        } else {
+            print "Student deleted.\n";
+        }
+    }
+    close $fh;
+}
